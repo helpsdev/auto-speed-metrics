@@ -1,0 +1,28 @@
+{
+  "pages": [
+    {
+      "name": "home",
+      "URL": "https://www.midas.com",
+      "strategies": [
+        "MOBILE",
+        "DESKTOP"
+      ]
+    },
+    {
+     "name": "brake_and_brake_repair",
+     "URL": "https://www.midas.com/auto-repair-services/brake-repair-service",
+     "strategies": [
+        "MOBILE",
+        "DESKTOP"
+      ]
+    },
+    {
+     "name": "store_details",
+     "URL": "https://www.midas.com/store/fl/tampa/315-n-dale-mabry-33609?shopnum=3177",
+     "strategies": [
+        "MOBILE",
+        "DESKTOP"
+      ]
+    }
+  ]
+}

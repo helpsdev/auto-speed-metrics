@@ -1,0 +1,11 @@
+{
+  "name": "auto-speed-metrics",
+  "version": "1.0.0",
+  "description": "Small app that connects to Google Speed Insights API and scan a given set of pages",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Edwin Aragon",
+  "license": "ISC"
+}
