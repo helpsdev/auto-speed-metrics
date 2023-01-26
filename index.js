@@ -1,29 +1,34 @@
 const fs = require('fs/promises');
 const pages = require('./pages.json').pages;
+const { wait } = require('./myUtil');
 //Async wrapper
 (async (pages) => {
-    
   pages.forEach(page => saveData(page));
 
   async function saveData(page){
-    const MILISECONDS = 1000;
-    console.log(`waiting ${MILISECONDS} ms between each request`);
     try {
-      page.strategies.forEach(strategy => {
+      page.strategies.forEach(async strategy => {
+        const MILISECONDS = 1000;
         const URL = getURL({pageURL: page.URL, strategy})
+        
+        console.log(`waiting ${MILISECONDS} ms between each request`);
+        await wait(MILISECONDS);
         console.log(`Request made using the URL: ${URL}`);
-        setTimeout(async () => {
-          const response = await fetch(URL);
-          const json = await response.json();
-          
-          const now = new Date();
-          const folderName = getFolderName({now, pageName: page.name});
-          const fileName = getFileName({pageName: page.name, pageStrategy: strategy, now});
+        
+        const response = await fetch(URL);
+        const json = await response.json();
+        
+        if (json.error){
+          console.log(`It has been an error with the scanned page :${page.name}, please see the json file for more details`);
+        }
 
-          await fs.mkdir(folderName, { recursive: true });
-          await fs.writeFile(`${folderName}/${fileName}.json`, JSON.stringify(json));
-          console.log("Data stored successfully");
-        }, MILISECONDS);
+        const now = new Date();
+        const folderName = getFolderName({now, pageName: page.name});
+        const fileName = getFileName({pageName: page.name, pageStrategy: strategy, now});
+
+        await fs.mkdir(folderName, { recursive: true });
+        await fs.writeFile(`${folderName}/${fileName}.json`, JSON.stringify(json));
+        console.log("Data stored successfully");
       });
   
     } catch (error) {
