@@ -6,20 +6,23 @@ https://googlechrome.github.io/lighthouse/viewer/
 https://www.npmjs.com/package/lighthouse-viewer
 
 
-TODO ITEMS
-[] Workflow for when a run in a page/strategy failed?
-  Should we retry at least once more? where to store that a run failed to re-run?
+###TODO ITEMS
+
+- [ ] Workflow for when a run in a page/strategy failed?
+  Should we retry at least once more? where to store that a run failed to re-run? 
+  Easiest would be use a for loop instead of forEach function for the strategies
   Since we know something failed at the moment we can try again and after a determined number of retries just log that the scan failed for that specific page
-[] Do we need to create a folder per page in case of multiple runs to avoid generating a lot of files in the month folder?
-[X] Add a MOBLIE and DESKTOP strategy by each URL provided
-[] Add a list of URLs and save them in a JSON file (JSON is best for now?)
-[X] Add the strategy to the name of the file
-[] Document what the name convention is e.g right now is YYYY/M/DD_HHMM_PAGE.json
-[] Double check if timeout of 1 second is enough
-[] Define the cadence for this tool to run, manually? auto? if auto when? how? task scheduler?
-[] Add range values for all the CRuX metrics () in a settings file?
-[] Improve console log messages as it seems they are not informative enough
-[] Add link to the lighthouse viewer at the end for user's awareness
+- [x] Do we need to create a folder per page in case of multiple runs to avoid generating a lot of files in the month folder?
+- [x] Add a MOBLIE and DESKTOP strategy by each URL provided
+- [ ] Add a list of URLs and save them in a JSON file (JSON is best for now?)
+- [x] Add the strategy to the name of the file
+- [ ] Add config.json (JSON?) file to store API KEY
+- [ ] Document what the name convention is e.g right now is YYYY/M/DD_HHMM_PAGE.json
+- [ ] Double check if timeout of 1 second is enough
+- [ ] Define the cadence for this tool to run, manually? auto? if auto when? how? task scheduler?
+- [ ] Add range values for all the CRuX metrics () in a settings file?
+- [ ] Improve console log messages as it seems they are not informative enough
+- [ ] Add link to the lighthouse viewer at the end for user's awareness
 
 e.g CUMULATIVE_LAYOUT_SHIFT_SCORE => unitless 
 "CUMULATIVE_LAYOUT_SHIFT_SCORE": {
