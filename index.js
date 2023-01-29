@@ -1,6 +1,6 @@
 const fs = require('fs/promises');
 const pages = require('./pages.json').pages;
-const { wait } = require('./myUtil');
+const { wait, getFolderName, getFileName } = require('./myUtil');
 //Async wrapper
 (async (pages) => {
   pages.forEach(page => saveData(page));
@@ -52,21 +52,6 @@ const { wait } = require('./myUtil');
     return query;
   }
 
-  function isDoubleDigit(number){
-    return number.toString().length > 1;
-  }
-
-  function getFolderName(params){
-    const { now, pageName } = params;
-    const oneBasedMonth = now.getMonth() + 1;
-    const monthNumber = isDoubleDigit(oneBasedMonth) ? oneBasedMonth.toString() : `0${oneBasedMonth}`; 
-
-    return `${now.getFullYear()}/${monthNumber}/${pageName}`;
-  }
-  function getFileName(details){
-    const {now, pageName, pageStrategy} = details;
-
-    return `${now.getDate()}_${now.getHours()}${now.getMinutes()}_${pageName}_${pageStrategy}`;
-  }
+  
 })(pages);
 
